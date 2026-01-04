@@ -1,0 +1,70 @@
+CUSTOM LICENSE - PORTFOLIO & EDUCATIONAL USE ONLY
+
+Copyright (c) 2026 FluxCast / Abhiyan PA
+Production Site: https://tv.abhiyanpa.in/
+
+TERMS AND CONDITIONS
+
+1. PURPOSE
+   This repository is published solely for portfolio and educational purposes to 
+   demonstrate coding skills and technical capabilities. It is NOT open-source software.
+
+2. VIEWING AND LEARNING
+   You are permitted to:
+   - View and study the source code
+   - Use it for learning purposes
+   - Reference it in educational contexts
+
+3. PRODUCTION USE RESTRICTIONS
+   If you wish to use ANY part of this code in a production environment or public website:
+   
+   a) MANDATORY ATTRIBUTION REQUIREMENTS:
+      You MUST provide clear and prominent attribution to the original author in ALL of the 
+      following locations:
+      - Video Player interface (visible during playback)
+      - Website Footer (on every page)
+      - About/Credits page (dedicated section)
+      - FAQ page (in acknowledgments section)
+   
+   b) ATTRIBUTION FORMAT:
+      "Built using FluxCast by Abhiyan PA (https://tv.abhiyanpa.in/)"
+      OR
+      "Original code by Abhiyan PA - https://github.com/[your-username]/fluxcast-frontend"
+   
+   c) LINK REQUIREMENT:
+      Attribution must include a working hyperlink to either:
+      - The production site: https://tv.abhiyanpa.in/
+      - This GitHub repository
+
+4. ENFORCEMENT
+   The copyright holder reserves the right to:
+   - Issue takedown notices for any unauthorized use
+   - Require immediate removal of derivative works without proper attribution
+   - Take legal action for copyright infringement
+   - Revoke usage rights at any time for violations
+
+5. NO WARRANTY
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+
+6. LIABILITY
+   IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+7. MODIFICATION RESTRICTIONS
+   - You may NOT remove or modify existing attribution in the code
+   - You may NOT claim this work as your own
+   - You may NOT redistribute without this license file
+
+8. COMMERCIAL USE
+   Commercial use requires explicit written permission from the copyright holder.
+   Contact through GitHub or the production site for licensing inquiries.
+
+SUMMARY:
+This is portfolio code. Look, learn, but if you use it in production, give proper credits 
+in the player, footer, about page, and FAQs. Otherwise, I have full rights to take down 
+your site.
+
+For permissions beyond this license, contact: [Your Contact Information]

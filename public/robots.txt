@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /channel/*/player
+Disallow: /*.m3u8$
+Disallow: /*.ts$
+
+Sitemap: https://fluxcast-1cbb7.web.app/sitemap.xml
