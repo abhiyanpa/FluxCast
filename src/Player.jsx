@@ -236,7 +236,7 @@ function Player({ channel, onClose }) {
 
   const handleVideoError = (e) => {
     console.error('Video error:', e)
-    setError('Failed to load video stream')
+    setError('cors-blocked')
     setLoading(false)
   }
 
@@ -409,9 +409,31 @@ function Player({ channel, onClose }) {
           {error && (
             <div className="video-error">
               <div className="error-icon-large">⚠️</div>
-              <h3>{error}</h3>
-              <p className="error-hint">The stream may be temporarily unavailable</p>
-              <button className="btn-primary" onClick={onClose}>Go Back</button>
+              <h3>Stream Blocked by Browser</h3>
+              <p className="error-hint">
+                This stream cannot be played directly in the browser due to CORS restrictions.
+                <br/>Many IPTV streams work only with desktop apps like VLC.
+              </p>
+              <div className="error-solutions">
+                <h4>📺 How to Watch:</h4>
+                <ol style={{textAlign: 'left', margin: '1rem auto', maxWidth: '400px'}}>
+                  <li><strong>VLC Media Player:</strong> Open VLC → Media → Open Network Stream → Paste URL</li>
+                  <li><strong>Copy Stream URL:</strong> Right-click channel → "Copy link"</li>
+                  <li><strong>Try Another Channel:</strong> Some channels work directly in browser</li>
+                </ol>
+              </div>
+              <div style={{display: 'flex', gap: '10px', justifyContent: 'center', marginTop: '1rem'}}>
+                <button 
+                  className="btn-primary" 
+                  onClick={() => {
+                    navigator.clipboard.writeText(channel.stream_url)
+                    alert('Stream URL copied! Paste it in VLC Media Player.')
+                  }}
+                >
+                  📋 Copy URL for VLC
+                </button>
+                <button className="btn-secondary" onClick={onClose}>Go Back</button>
+              </div>
             </div>
           )}
 
@@ -529,11 +551,33 @@ function Player({ channel, onClose }) {
             )}
           </div>
 
-          {channel.website && (
-            <div className="info-website">
-              <a href={channel.website} target="_blank" rel="noopener noreferrer" className="website-link">
-                Official Website →
+          <div className="info-actions" style={{marginTop: '1.5rem', display: 'flex', gap: '10px', flexWrap: 'wrap'}}>
+            <button 
+              className="btn-secondary" 
+              onClick={() => {
+                navigator.clipboard.writeText(channel.stream_url)
+                alert('Stream URL copied! You can paste it in VLC or other media players.')
+              }}
+              style={{flex: '1', minWidth: '200px'}}
+            >
+              📋 Copy URL for VLC
+            </button>
+            {channel.website && (
+              <a 
+                href={channel.website} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="btn-secondary"
+                style={{flex: '1', minWidth: '200px', textDecoration: 'none', display: 'inline-block', textAlign: 'center'}}
+              >
+                🌐 Official Website
               </a>
+            )}
+          </div>
+
+          {!channel.website && (
+            <div className="info-hint" style={{marginTop: '1rem', padding: '1rem', background: 'rgba(255,255,255,0.05)', borderRadius: '8px', fontSize: '0.9rem'}}>
+              💡 <strong>Tip:</strong> If stream doesn't work in browser, copy the URL and open it in VLC Media Player for better compatibility.
             </div>
           )}
         </div>

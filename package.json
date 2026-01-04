@@ -7,9 +7,19 @@
     "build": "vite build",
     "preview": "vite preview",
     "generate-sitemap": "node scripts/generate-sitemap.js",
-    "prebuild": "node scripts/generate-sitemap.js"
+    "prebuild": "node scripts/generate-sitemap.js",
+    "cap:sync": "cap sync",
+    "cap:android": "cap sync android && cap open android",
+    "android:build": "npm run build && cap sync android",
+    "android:open": "cap open android"
   },
   "dependencies": {
+    "@capacitor/android": "^8.0.0",
+    "@capacitor/app": "^8.0.0",
+    "@capacitor/cli": "^8.0.0",
+    "@capacitor/core": "^8.0.0",
+    "@capacitor/splash-screen": "^8.0.0",
+    "@capacitor/status-bar": "^8.0.0",
     "firebase": "^12.7.0",
     "hls.js": "^1.5.0",
     "lucide-react": "^0.562.0",

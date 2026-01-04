@@ -53,3 +53,8 @@ data/
 # Cache
 .cache/
 .parcel-cache/
+
+# Capacitor
+android/
+ios/
+.capacitor/
