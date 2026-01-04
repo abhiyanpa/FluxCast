@@ -241,8 +241,9 @@ function Player({ channel, onClose }) {
   }
 
   const handleFullscreen = async () => {
-    const container = videoRef.current?.parentElement
-    if (!container) return
+    const video = videoRef.current
+    const container = video?.parentElement
+    if (!video || !container) return
 
     try {
       // Check if already in fullscreen
@@ -253,25 +254,41 @@ function Player({ channel, onClose }) {
         document.msFullscreenElement
 
       if (!isCurrentlyFullscreen) {
-        // Enter fullscreen - try all vendor prefixes
-        if (container.requestFullscreen) {
+        // For iOS/mobile: use video element's native fullscreen
+        if (video.webkitEnterFullscreen) {
+          video.webkitEnterFullscreen() // iOS Safari (video element)
+          setIsFullscreen(true)
+        } 
+        // For desktop: use container fullscreen with all vendor prefixes
+        else if (container.requestFullscreen) {
           await container.requestFullscreen()
+          setIsFullscreen(true)
         } else if (container.webkitRequestFullscreen) {
-          await container.webkitRequestFullscreen() // Safari
-        } else if (container.webkitEnterFullscreen) {
-          await container.webkitEnterFullscreen() // iOS Safari
+          await container.webkitRequestFullscreen() // Safari desktop
+          setIsFullscreen(true)
         } else if (container.mozRequestFullScreen) {
           await container.mozRequestFullScreen() // Firefox
+          setIsFullscreen(true)
         } else if (container.msRequestFullscreen) {
           await container.msRequestFullscreen() // IE11
+          setIsFullscreen(true)
         }
-        setIsFullscreen(true)
+        // Fallback for Android: try video element
+        else if (video.requestFullscreen) {
+          await video.requestFullscreen()
+          setIsFullscreen(true)
+        } else if (video.webkitRequestFullscreen) {
+          await video.webkitRequestFullscreen()
+          setIsFullscreen(true)
+        }
       } else {
         // Exit fullscreen - try all vendor prefixes
         if (document.exitFullscreen) {
           await document.exitFullscreen()
         } else if (document.webkitExitFullscreen) {
           await document.webkitExitFullscreen() // Safari
+        } else if (document.webkitCancelFullScreen) {
+          await document.webkitCancelFullScreen() // iOS Safari
         } else if (document.mozCancelFullScreen) {
           await document.mozCancelFullScreen() // Firefox
         } else if (document.msExitFullscreen) {
@@ -281,6 +298,7 @@ function Player({ channel, onClose }) {
       }
     } catch (err) {
       console.error('Fullscreen error:', err)
+      // Silent fail - fullscreen may not be supported
     }
   }
 
